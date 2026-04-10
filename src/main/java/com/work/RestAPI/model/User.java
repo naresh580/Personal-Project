@@ -3,8 +3,10 @@ package com.work.RestAPI.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
+    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -35,5 +37,4 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-// Getters and Setters
 }
