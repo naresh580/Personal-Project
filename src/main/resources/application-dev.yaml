@@ -1,0 +1,30 @@
+server:
+  port: 8083
+
+#database configurations
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/auth-app?useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 10000
+      pool-name: HikariCP
+      maximum-pool-size: 10
+      idle-timeout: 60000
+      max-lifetime: 100000
+      validation-timeout: 100000
+      leak-detection-threshold: 0
+      initialization-fail-timeout: -1
+
+  jpa:
+    hibernate:
+      # 'update' automatically creates/modifies tables based on your Java entities
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        # Standard dialect for modern MySQL versions (XAMPP often uses MariaDB/MySQL 8+)
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
