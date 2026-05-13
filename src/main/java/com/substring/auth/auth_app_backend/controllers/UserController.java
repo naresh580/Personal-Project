@@ -29,4 +29,19 @@ public class UserController {
     public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email){
         return ResponseEntity.ok(userService.getUserByEmail(email));
     }
+
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable String userId){
+        userService.deleteUser(userId);
+    }
+
+    @PutMapping("/{userId}")
+    public ResponseEntity<UserDto> updateUser(@PathVariable String userId, @RequestBody UserDto userdto){
+        return ResponseEntity.ok(userService.updateUser(userdto, userId));
+    }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable String userId){
+        return ResponseEntity.ok(userService.getUserById(userId));
+    }
 }
