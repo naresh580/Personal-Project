@@ -1,9 +1,11 @@
 package com.substring.auth.auth_app_backend.services.impl;
 
+import com.substring.auth.auth_app_backend.config.SecurityConfig;
 import com.substring.auth.auth_app_backend.dtos.UserDto;
 import com.substring.auth.auth_app_backend.services.AuthService;
 import com.substring.auth.auth_app_backend.services.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,10 +13,11 @@ import org.springframework.stereotype.Service;
 public class AuthServiceImpl implements AuthService {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDto registerUser(UserDto userDto) {
-        UserDto userDto1 = userService.createUser(userDto);
-        return null;
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        return userService.createUser(userDto);
     }
 }

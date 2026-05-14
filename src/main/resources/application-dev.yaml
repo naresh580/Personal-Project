@@ -28,3 +28,8 @@ spring:
         # Standard dialect for modern MySQL versions (XAMPP often uses MariaDB/MySQL 8+)
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
+
+  #to enable spring security logs
+logging:
+  level:
+    org.springframework.security: DEBUG
